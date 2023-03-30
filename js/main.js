@@ -25,6 +25,11 @@ names.forEach((name, index) => {
     }deg) translateY(-100vh)`;
     pic.style.backgroundImage = `url(img/${name}.jpeg)`;
     h2.innerText = name;
+
+    const audio = document.createElement("audio");
+    audio.setAttribute("src", `music/${name}.mp3`);
+    audio.setAttribute("loop", "loop");
+    list[index].append(audio);
 });
 
 prev.addEventListener("click", (e) => {
@@ -59,6 +64,7 @@ for (let el of list) {
             .closest("article")
             .querySelector(".pic")
             .classList.add("on");
+        e.currentTarget.closest("article").querySelector("audio").play();
     });
 
     pause.addEventListener("click", (e) => {
@@ -66,5 +72,15 @@ for (let el of list) {
             .closest("article")
             .querySelector(".pic")
             .classList.remove("on");
+        e.currentTarget.closest("article").querySelector("audio").pause();
+    });
+
+    load.addEventListener("click", (e) => {
+        e.currentTarget
+            .closest("article")
+            .querySelector(".pic")
+            .classList.add("on");
+        e.currentTarget.closest("article").querySelector("audio").load();
+        e.currentTarget.closest("article").querySelector("audio").play();
     });
 }
