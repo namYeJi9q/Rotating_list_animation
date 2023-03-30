@@ -21,6 +21,7 @@ section {
   top: 150%;
   margin-left: -10vw;
   margin-top: -32vh;
+  transition: 1s;
 }
 section article {
   width: 100%;
@@ -37,6 +38,12 @@ section article .inner {
   border-radius: 10px;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
   opacity: 0.6;
+  transform: scale(0.8);
+  transition: 1s;
+}
+section article.on .inner {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .btnPrev {
