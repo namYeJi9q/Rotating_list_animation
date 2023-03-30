@@ -39,13 +39,111 @@ section article .inner {
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
   opacity: 0.6;
   transform: scale(0.8);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-around;
   transition: 1s;
+}
+section article .inner .pic {
+  width: 15vw;
+  height: 15vw;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: -9999px -9999px;
+}
+section article .inner .pic::before, section article .inner .pic::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: inherit;
+}
+section article .inner .pic::before {
+  transform: translateY(10%);
+  filter: blur(20px) brightness(160%);
+}
+section article .inner .pic .dot {
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+section article .inner .pic.on::before {
+  animation: rotation2 4s linear infinite;
+}
+section article .inner .pic.on::after {
+  animation: rotation 4s linear infinite;
+}
+section article .inner .txt {
+  width: 100%;
+  text-align: center;
+}
+section article .inner .txt h2 {
+  font: bold 20px/1 "arial";
+  color: #222;
+  margin-bottom: 2vh;
+}
+section article .inner .txt p {
+  font: 14px/1.2 "arial";
+  color: #777;
+  margin-bottom: 3vh;
+}
+section article .inner .txt ul {
+  display: flex;
+  justify-content: space-around;
+}
+section article .inner .txt ul li {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: 0.5s;
+}
+section article .inner .txt ul li.play {
+  transform: scale(1.5);
+  opacity: 0.9;
+}
+section article .inner .txt ul li:hover {
+  transform: scale(1.5);
+  opacity: 0.8;
+}
+section article .inner .txt ul li:hover.play {
+  transform: scale(2);
+  opacity: 1;
 }
 section article.on .inner {
   opacity: 1;
   transform: scale(1);
 }
 
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotation2 {
+  0% {
+    transform: translateY(10%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(10%) rotate(360deg);
+  }
+}
 .btnPrev {
   width: 60px;
   height: 60px;
